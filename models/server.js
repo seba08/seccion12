@@ -9,6 +9,9 @@ class Server {
         this.app = express();
         this.port = process.env.PORT || 5000;
 
+        //setting
+        this.setting();
+
         //middlewares
         this.middlewares();
 
@@ -20,6 +23,10 @@ class Server {
 
     async connectDB(){
         await dbConnection();
+    }
+
+    setting(){
+        this.app.set('json spaces', 2)
     }
 
     middlewares(){
