@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs')
 const User = require('../models/users')
 const getUsers = async(req, res = response)=>{
     const { limite = 5, desde = 0 } = req.query;
+    const { name } = req.body;
     const query = {status: true}
     /* const users = await User.find(query)
         .skip(desde)
@@ -13,6 +14,8 @@ const getUsers = async(req, res = response)=>{
         User.find(query)
             .skip(desde)
             .limit(limite)
+            .sort({name})
+            
     ])
     res.json({
 
