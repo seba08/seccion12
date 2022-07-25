@@ -11,9 +11,7 @@ const getUsers = async(req, res = response)=>{
    
     const [ total, usuarios ] = await Promise.all([
         User.count(query),
-        User.find(query)
-            .skip(desde)
-            .limit(limite)
+        User.find({})
             .sort({name})
             
     ])
