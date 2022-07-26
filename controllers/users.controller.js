@@ -59,14 +59,19 @@ const putUser = async(req = request, res = response)=>{
     })
 }
 
-const deleteUser = async(req, res = response)=> {
+const deleteUser = async(req = request, res = response)=> {
     const { id } = req.params
-
+    
     const user = await User.findByIdAndUpdate(id, {status: false})
-
+    const autenticatedUser = req.user;
     res.json(
-        user
+       { 
+        user,
+        autenticatedUser,
+        }
     )
+
+    console.log(req.user)
 }
 
 
